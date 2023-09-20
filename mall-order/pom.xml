@@ -7,10 +7,10 @@
         <artifactId>GuLiMall</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <artifactId>mall-product</artifactId>
+    <artifactId>mall-order</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>mall-product</name>
-    <description>mall-product</description>
+    <name>mall-order</name>
+    <description>mall-order</description>
 
     <dependencies>
         <dependency>
