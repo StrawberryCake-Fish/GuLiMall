@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import lombok.Data;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -16,6 +17,7 @@ import java.io.Serializable;
  * @author Fish
  * @since 2023-09-22
  */
+@Data
 @TableName("pms_attr_attr_group_relation")
 public class AttrAttrGroupRelationEntity implements Serializable {
 
@@ -45,46 +47,4 @@ public class AttrAttrGroupRelationEntity implements Serializable {
      */
     @TableField("attr_sort")
     private Integer attrSort;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getAttrId() {
-        return attrId;
-    }
-
-    public void setAttrId(Long attrId) {
-        this.attrId = attrId;
-    }
-
-    public Long getAttrGroupId() {
-        return attrGroupId;
-    }
-
-    public void setAttrGroupId(Long attrGroupId) {
-        this.attrGroupId = attrGroupId;
-    }
-
-    public Integer getAttrSort() {
-        return attrSort;
-    }
-
-    public void setAttrSort(Integer attrSort) {
-        this.attrSort = attrSort;
-    }
-
-    @Override
-    public String toString() {
-        return "AttrAttrGroupRelationEntity{" +
-            "id = " + id +
-            ", attrId = " + attrId +
-            ", attrGroupId = " + attrGroupId +
-            ", attrSort = " + attrSort +
-        "}";
-    }
 }

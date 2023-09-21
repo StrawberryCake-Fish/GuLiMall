@@ -1,6 +1,9 @@
 package org.fish.core.exception;
 
 
+import lombok.Getter;
+
+@Getter
 public enum ResultMsgEnum {
     SUCCESS(200, "Success"),
     ERROR(500, "Fail");
@@ -13,11 +16,4 @@ public enum ResultMsgEnum {
         this.message = message;
     }
 
-    public Integer getCode() {
-        return code;
-    }
-
-    public String getMessage() {
-        return message;
-    }
 }

@@ -3931,8 +3931,8 @@ VALUES (2, 'Apple iPhone 11 Pro Max (A2220) ',
 DROP TABLE IF EXISTS `pms_spu_info_desc`;
 CREATE TABLE `pms_spu_info_desc`
 (
-    `spu_id`  bigint                                                    NOT NULL COMMENT '商品id',
-    `decript` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL COMMENT '商品介绍',
+    `spu_id`      bigint                                                    NOT NULL COMMENT '商品id',
+    `description` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL COMMENT '商品介绍',
     PRIMARY KEY (`spu_id`) USING BTREE
 ) ENGINE = InnoDB
   CHARACTER SET = utf8mb4

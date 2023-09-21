@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import lombok.Data;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -16,6 +17,7 @@ import java.io.Serializable;
  * @author Fish
  * @since 2023-09-22
  */
+@Data
 @TableName("pms_brand")
 public class BrandEntity implements Serializable {
 
@@ -63,73 +65,4 @@ public class BrandEntity implements Serializable {
      */
     @TableField("sort")
     private Integer sort;
-
-    public Long getBrandId() {
-        return brandId;
-    }
-
-    public void setBrandId(Long brandId) {
-        this.brandId = brandId;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getLogo() {
-        return logo;
-    }
-
-    public void setLogo(String logo) {
-        this.logo = logo;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public Byte getShowStatus() {
-        return showStatus;
-    }
-
-    public void setShowStatus(Byte showStatus) {
-        this.showStatus = showStatus;
-    }
-
-    public String getFirstLetter() {
-        return firstLetter;
-    }
-
-    public void setFirstLetter(String firstLetter) {
-        this.firstLetter = firstLetter;
-    }
-
-    public Integer getSort() {
-        return sort;
-    }
-
-    public void setSort(Integer sort) {
-        this.sort = sort;
-    }
-
-    @Override
-    public String toString() {
-        return "BrandEntity{" +
-            "brandId = " + brandId +
-            ", name = " + name +
-            ", logo = " + logo +
-            ", description = " + description +
-            ", showStatus = " + showStatus +
-            ", firstLetter = " + firstLetter +
-            ", sort = " + sort +
-        "}";
-    }
 }

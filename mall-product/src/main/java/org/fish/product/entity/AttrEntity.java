@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import lombok.Data;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -16,6 +17,7 @@ import java.io.Serializable;
  * @author Fish
  * @since 2023-09-22
  */
+@Data
 @TableName("pms_attr")
 public class AttrEntity implements Serializable {
 
@@ -78,100 +80,4 @@ public class AttrEntity implements Serializable {
      */
     @TableField("show_desc")
     private Byte showDesc;
-
-    public Long getAttrId() {
-        return attrId;
-    }
-
-    public void setAttrId(Long attrId) {
-        this.attrId = attrId;
-    }
-
-    public String getAttrName() {
-        return attrName;
-    }
-
-    public void setAttrName(String attrName) {
-        this.attrName = attrName;
-    }
-
-    public Byte getSearchType() {
-        return searchType;
-    }
-
-    public void setSearchType(Byte searchType) {
-        this.searchType = searchType;
-    }
-
-    public String getIcon() {
-        return icon;
-    }
-
-    public void setIcon(String icon) {
-        this.icon = icon;
-    }
-
-    public String getValueSelect() {
-        return valueSelect;
-    }
-
-    public void setValueSelect(String valueSelect) {
-        this.valueSelect = valueSelect;
-    }
-
-    public Byte getAttrType() {
-        return attrType;
-    }
-
-    public void setAttrType(Byte attrType) {
-        this.attrType = attrType;
-    }
-
-    public Byte getValueType() {
-        return valueType;
-    }
-
-    public void setValueType(Byte valueType) {
-        this.valueType = valueType;
-    }
-
-    public Long getEnable() {
-        return enable;
-    }
-
-    public void setEnable(Long enable) {
-        this.enable = enable;
-    }
-
-    public Long getCateLogId() {
-        return cateLogId;
-    }
-
-    public void setCateLogId(Long cateLogId) {
-        this.cateLogId = cateLogId;
-    }
-
-    public Byte getShowDesc() {
-        return showDesc;
-    }
-
-    public void setShowDesc(Byte showDesc) {
-        this.showDesc = showDesc;
-    }
-
-    @Override
-    public String toString() {
-        return "AttrEntity{" +
-            "attrId = " + attrId +
-            ", attrName = " + attrName +
-            ", searchType = " + searchType +
-            ", icon = " + icon +
-            ", valueSelect = " + valueSelect +
-            ", attrType = " + attrType +
-            ", valueType = " + valueType +
-            ", enable = " + enable +
-            ", cateLogId = " + cateLogId +
-            ", showDesc = " + showDesc +
-        "}";
-    }
 }

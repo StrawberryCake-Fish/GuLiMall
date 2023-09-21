@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import lombok.Data;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -16,6 +17,7 @@ import java.io.Serializable;
  * @author Fish
  * @since 2023-09-22
  */
+@Data
 @TableName("pms_attr_group")
 public class AttrGroupEntity implements Serializable {
 
@@ -57,64 +59,4 @@ public class AttrGroupEntity implements Serializable {
      */
     @TableField("cate_log_id")
     private Long cateLogId;
-
-    public Long getAttrGroupId() {
-        return attrGroupId;
-    }
-
-    public void setAttrGroupId(Long attrGroupId) {
-        this.attrGroupId = attrGroupId;
-    }
-
-    public String getAttrGroupName() {
-        return attrGroupName;
-    }
-
-    public void setAttrGroupName(String attrGroupName) {
-        this.attrGroupName = attrGroupName;
-    }
-
-    public Integer getSort() {
-        return sort;
-    }
-
-    public void setSort(Integer sort) {
-        this.sort = sort;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getIcon() {
-        return icon;
-    }
-
-    public void setIcon(String icon) {
-        this.icon = icon;
-    }
-
-    public Long getCateLogId() {
-        return cateLogId;
-    }
-
-    public void setCateLogId(Long cateLogId) {
-        this.cateLogId = cateLogId;
-    }
-
-    @Override
-    public String toString() {
-        return "AttrGroupEntity{" +
-            "attrGroupId = " + attrGroupId +
-            ", attrGroupName = " + attrGroupName +
-            ", sort = " + sort +
-            ", description = " + description +
-            ", icon = " + icon +
-            ", cateLogId = " + cateLogId +
-        "}";
-    }
 }

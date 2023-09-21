@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import lombok.Data;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -16,6 +17,7 @@ import java.io.Serializable;
  * @author Fish
  * @since 2023-09-22
  */
+@Data
 @TableName("pms_spu_info_desc")
 public class SpuInfoDescEntity implements Serializable {
 
@@ -31,30 +33,6 @@ public class SpuInfoDescEntity implements Serializable {
     /**
      * 商品介绍
      */
-    @TableField("decript")
-    private String decript;
-
-    public Long getSpuId() {
-        return spuId;
-    }
-
-    public void setSpuId(Long spuId) {
-        this.spuId = spuId;
-    }
-
-    public String getDecript() {
-        return decript;
-    }
-
-    public void setDecript(String decript) {
-        this.decript = decript;
-    }
-
-    @Override
-    public String toString() {
-        return "SpuInfoDescEntity{" +
-            "spuId = " + spuId +
-            ", decript = " + decript +
-        "}";
-    }
+    @TableField("description")
+    private String description;
 }
