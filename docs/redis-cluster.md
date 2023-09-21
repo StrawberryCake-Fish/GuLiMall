@@ -1,6 +1,47 @@
 # Docker redis-cluster
 
+## firewalld
+
+```shell
+firewall-cmd --zone=public --add-port=6371/tcp --permanent && \
+firewall-cmd --zone=public --add-port=16371/tcp --permanent && \
+firewall-cmd --zone=public --add-port=6372/tcp --permanent && \
+firewall-cmd --zone=public --add-port=16372/tcp --permanent && \
+firewall-cmd --zone=public --add-port=6373/tcp --permanent && \
+firewall-cmd --zone=public --add-port=16373/tcp --permanent && \
+firewall-cmd --zone=public --add-port=6374/tcp --permanent && \
+firewall-cmd --zone=public --add-port=16374/tcp --permanent && \
+firewall-cmd --zone=public --add-port=6375/tcp --permanent && \
+firewall-cmd --zone=public --add-port=16375/tcp --permanent && \
+firewall-cmd --zone=public --add-port=6376/tcp --permanent && \
+firewall-cmd --zone=public --add-port=16376/tcp --permanent && \
+firewall-cmd --reload
+```
+
 ## dir
+
+```shell
+#!/bin/bash 
+for port in $(seq 6371 6376); 
+do 
+mkdir -p /opt/redis/redis-${port}/conf
+mkdir -p /opt/redis/redis-${port}/data
+touch /opt/redis/redis-${port}/conf/redis.conf
+cat  << EOF > /opt/redis/redis-${port}/conf/redis.conf
+port ${port}
+cluster-enabled yes
+cluster-config-file nodes-${port}.conf
+cluster-node-timeout 5000
+appendonly yes
+protected-mode no
+requirepass 1234
+masterauth 1234
+cluster-announce-ip 172.16.4.31
+cluster-announce-port ${port}
+cluster-announce-bus-port 1${port}
+EOF
+done
+```
 
 ```text
 [root@localhost redis]# tree
