@@ -1,0 +1,10 @@
+ip: localhost
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: GuLiMail-Product-Services
+          uri: http://${ip}:9010
+          predicates:
+            - Path=/product/*

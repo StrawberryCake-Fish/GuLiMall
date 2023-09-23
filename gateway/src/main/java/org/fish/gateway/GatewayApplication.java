@@ -1,16 +1,14 @@
-package org.fish.product;
+package org.fish.gateway;
 
-import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 @EnableDiscoveryClient
-@MapperScan(basePackages = "org.fish.product.mapper")
-@SpringBootApplication
-public class MallProductApplication {
+@SpringBootApplication(exclude = DataSourceAutoConfiguration.class)
+public class GatewayApplication {
     public static void main(String[] args) {
-        SpringApplication.run(MallProductApplication.class, args);
+        SpringApplication.run(GatewayApplication.class, args);
     }
-
 }

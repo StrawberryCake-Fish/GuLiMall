@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration debug="false" scan="true" scanPeriod="3 seconds">
     <contextName>logback</contextName>
-    <property name="LOG_PATH" value="logs/mall-product.log"/>
+    <property name="LOG_PATH" value="logs/gateway.log"/>
     <property name="FORMAT"
               value="[%d{yyyy-MM-dd HH-mm-ss.SSS}]-[%level]-[%thread]-[%logger{36}.%method:%line]-[%X{traceId:-NONE}] - %msg%n"/>
     <!--输出到控制台-->
