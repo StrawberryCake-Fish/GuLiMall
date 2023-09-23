@@ -10,7 +10,6 @@ public class CommonResult<T> extends BaseResult<T> implements Serializable {
     private static final long serialVersionUID = -7268040542410707954L;
 
     public CommonResult() {
-
     }
 
     public CommonResult(String message) {
@@ -49,10 +48,6 @@ public class CommonResult<T> extends BaseResult<T> implements Serializable {
 
     public static <T> CommonResult<T> fail(Integer code, String msg) {
         return baseCreate(code, msg);
-    }
-
-    public static <T> CommonResult<T> fail(Integer code, String msg, T data) {
-        return baseCreate(code, msg, data);
     }
 
     private static <T> CommonResult<T> baseCreate(Integer code, String msg) {

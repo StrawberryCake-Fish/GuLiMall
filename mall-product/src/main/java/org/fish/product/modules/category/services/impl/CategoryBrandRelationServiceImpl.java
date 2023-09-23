@@ -1,8 +1,8 @@
-package org.fish.product.services.impl;
+package org.fish.product.modules.category.services.impl;
 
-import org.fish.product.entity.CategoryBrandRelationEntity;
-import org.fish.product.mapper.CategoryBrandRelationMapper;
-import org.fish.product.services.CategoryBrandRelationService;
+import org.fish.product.modules.category.entity.CategoryBrandRelationEntity;
+import org.fish.product.modules.category.mapper.CategoryBrandRelationMapper;
+import org.fish.product.modules.category.services.CategoryBrandRelationService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 

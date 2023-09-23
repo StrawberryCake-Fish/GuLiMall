@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 @EnableDiscoveryClient
-@MapperScan(basePackages = "org.fish.product.mapper")
+@MapperScan(basePackages = {"org.fish.product.mapper", "org.fish.product.modules.category.mapper"})
 @SpringBootApplication
 public class MallProductApplication {
     public static void main(String[] args) {

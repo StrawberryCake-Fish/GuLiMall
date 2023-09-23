@@ -1,4 +1,4 @@
-package org.fish.product.entity;
+package org.fish.product.modules.category.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;

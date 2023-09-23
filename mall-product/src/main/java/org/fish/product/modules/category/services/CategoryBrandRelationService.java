@@ -1,6 +1,6 @@
-package org.fish.product.services;
+package org.fish.product.modules.category.services;
 
-import org.fish.product.entity.CategoryBrandRelationEntity;
+import org.fish.product.modules.category.entity.CategoryBrandRelationEntity;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**

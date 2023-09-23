@@ -1,4 +1,4 @@
-package org.fish.product.entity;
+package org.fish.product.modules.category.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
@@ -8,6 +8,7 @@ import lombok.Data;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * <p>
@@ -77,4 +78,7 @@ public class CategoryEntity implements Serializable {
      */
     @TableField("product_count")
     private Integer productCount;
+
+    @TableField(exist = false)
+    private List<CategoryEntity> children;
 }

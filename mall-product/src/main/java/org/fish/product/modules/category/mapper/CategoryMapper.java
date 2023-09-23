@@ -1,7 +1,7 @@
-package org.fish.product.mapper;
+package org.fish.product.modules.category.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
-import org.fish.product.entity.CategoryEntity;
+import org.fish.product.modules.category.entity.CategoryEntity;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
