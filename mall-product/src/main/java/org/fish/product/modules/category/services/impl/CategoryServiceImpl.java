@@ -3,10 +3,12 @@ package org.fish.product.modules.category.services.impl;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import lombok.extern.slf4j.Slf4j;
+import org.fish.core.exception.CustomException;
 import org.fish.product.modules.category.entity.CategoryEntity;
 import org.fish.product.modules.category.mapper.CategoryMapper;
 import org.fish.product.modules.category.services.CategoryService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Comparator;
 import java.util.List;
@@ -41,8 +43,18 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryMapper, CategoryEnt
                 .toList();
     }
 
+    @Override
+    @Transactional
     public void delCate(List<Long> cateIds) {
-        int result = baseMapper.deleteBatchIds(cateIds);
-        log.info(Integer.valueOf(result).toString());
+        for (Long id : cateIds) {
+            CategoryEntity entity = baseMapper.selectById(id);
+            if (entity != null) {
+                Long count = baseMapper.selectCount(new LambdaQueryWrapper<CategoryEntity>().eq(CategoryEntity::getParentCid, entity.getCatId()));
+                if (count > 0) {
+                    throw new CustomException(String.format("Id %s the submenu is in use!", id));
+                }
+            }
+        }
+        baseMapper.deleteBatchIds(cateIds);
     }
 }

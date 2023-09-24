@@ -1,6 +1,7 @@
 package org.fish.product.exception;
 
 import lombok.extern.slf4j.Slf4j;
+import org.fish.core.exception.CustomException;
 import org.fish.core.exception.ResultMsgEnum;
 import org.fish.core.http.CommonResult;
 import org.springframework.validation.BindingResult;
@@ -35,5 +36,11 @@ public class GlobalExceptionHandler {
         Map<String, String> fileErrors = new HashMap<>();
         bindingResult.getFieldErrors().forEach(fieldError -> fileErrors.put(fieldError.getField(), fieldError.getDefaultMessage()));
         return CommonResult.fail(ResultMsgEnum.ERROR.getCode(), "Request parameter error!", fileErrors);
+    }
+
+    @ExceptionHandler(CustomException.class)
+    public CommonResult<?> handleMethodArgumentNotValidException(CustomException e) {
+        log.error("Error ", e);
+        return CommonResult.fail(ResultMsgEnum.ERROR.getCode(), e.getMessage());
     }
 }
