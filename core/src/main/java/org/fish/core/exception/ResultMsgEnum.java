@@ -5,13 +5,13 @@ import lombok.Getter;
 
 @Getter
 public enum ResultMsgEnum {
-    SUCCESS(200, "Success"),
-    ERROR(500, "Fail");
+    SUCCESS("Common.Code.Success", "Success"),
+    ERROR("Common.Code.Error", "Fail");
 
-    private final Integer code;
+    private final String code;
     private final String message;
 
-    ResultMsgEnum(Integer code, String message) {
+    ResultMsgEnum(String code, String message) {
         this.code = code;
         this.message = message;
     }

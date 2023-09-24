@@ -16,7 +16,7 @@ public class CommonResult<T> extends BaseResult<T> implements Serializable {
         this.setMessage(message);
     }
 
-    public CommonResult(Integer code, String message) {
+    public CommonResult(String code, String message) {
         this.setCode(code);
         this.setMessage(message);
     }
@@ -34,11 +34,11 @@ public class CommonResult<T> extends BaseResult<T> implements Serializable {
         return baseCreate(ResultMsgEnum.SUCCESS.getCode(), ResultMsgEnum.SUCCESS.getMessage(), data);
     }
 
-    public static <T> CommonResult<T> ok(Integer code, String msg) {
+    public static <T> CommonResult<T> ok(String code, String msg) {
         return baseCreate(code, msg);
     }
 
-    public static <T> CommonResult<T> ok(Integer code, String msg, T data) {
+    public static <T> CommonResult<T> ok(String code, String msg, T data) {
         return baseCreate(code, msg, data);
     }
 
@@ -46,11 +46,15 @@ public class CommonResult<T> extends BaseResult<T> implements Serializable {
         return fail(ResultMsgEnum.ERROR.getCode(), ResultMsgEnum.ERROR.getMessage());
     }
 
-    public static <T> CommonResult<T> fail(Integer code, String msg) {
+    public static <T> CommonResult<T> fail(String code, String msg) {
         return baseCreate(code, msg);
     }
 
-    private static <T> CommonResult<T> baseCreate(Integer code, String msg) {
+    public static <T> CommonResult<T> fail(String code, String msg, T data) {
+        return baseCreate(code, msg, data);
+    }
+
+    private static <T> CommonResult<T> baseCreate(String code, String msg) {
         CommonResult<T> result = new CommonResult<>();
         result.setCode(code);
         result.setMessage(msg);
@@ -58,7 +62,7 @@ public class CommonResult<T> extends BaseResult<T> implements Serializable {
         return result;
     }
 
-    private static <T> CommonResult<T> baseCreate(Integer code, String msg, T data) {
+    private static <T> CommonResult<T> baseCreate(String code, String msg, T data) {
         CommonResult<T> result = new CommonResult<>();
         result.setCode(code);
         result.setMessage(msg);

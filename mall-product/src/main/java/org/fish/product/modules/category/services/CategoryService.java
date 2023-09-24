@@ -1,7 +1,7 @@
 package org.fish.product.modules.category.services;
 
-import org.fish.product.modules.category.entity.CategoryEntity;
 import com.baomidou.mybatisplus.extension.service.IService;
+import org.fish.product.modules.category.entity.CategoryEntity;
 
 import java.util.List;
 
@@ -15,4 +15,6 @@ import java.util.List;
  */
 public interface CategoryService extends IService<CategoryEntity> {
     List<CategoryEntity> listWithTree();
+
+    void delCate(List<Long> cateIds);
 }

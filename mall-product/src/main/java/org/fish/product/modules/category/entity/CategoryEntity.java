@@ -1,9 +1,6 @@
 package org.fish.product.modules.category.entity;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.*;
 import lombok.Data;
 
 import java.io.Serial;
@@ -52,6 +49,7 @@ public class CategoryEntity implements Serializable {
     /**
      * 是否显示[0-不显示，1显示]
      */
+    @TableLogic(value = "1", delval = "0")
     @TableField("show_status")
     private Byte showStatus;
 

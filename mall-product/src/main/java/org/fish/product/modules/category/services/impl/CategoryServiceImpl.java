@@ -40,4 +40,9 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryMapper, CategoryEnt
                 .sorted(Comparator.comparingInt(cate -> (cate.getSort() == null ? 0 : cate.getSort())))
                 .toList();
     }
+
+    public void delCate(List<Long> cateIds) {
+        int result = baseMapper.deleteBatchIds(cateIds);
+        log.info(Integer.valueOf(result).toString());
+    }
 }
