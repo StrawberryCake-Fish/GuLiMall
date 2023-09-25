@@ -25,9 +25,33 @@ import java.util.Objects;
 @Slf4j
 @Service
 public class CategoryServiceImpl extends ServiceImpl<CategoryMapper, CategoryEntity> implements CategoryService {
+    @Transactional
+    @Override
+    public void createCate(CategoryEntity entity) {
+        LambdaQueryWrapper<CategoryEntity> queryWrapper = new LambdaQueryWrapper<>();
+        if (entity.getParentCid() != 0) {
+            Long count = baseMapper.selectCount(queryWrapper
+                    .eq(CategoryEntity::getParentCid, entity.getParentCid())
+                    .eq(CategoryEntity::getIsDeleted, 0));
+            if (count == 0) {
+                throw new CustomException("ParentCid nonexistent!");
+            }
+        }
+        Long nameCount = baseMapper.selectCount(queryWrapper
+                .eq(CategoryEntity::getName, entity.getName())
+                .eq(CategoryEntity::getIsDeleted, 0));
+        if (nameCount != 0) {
+            throw new CustomException("Name duplication!");
+        }
+        baseMapper.insert(entity);
+    }
+
+
     @Override
     public List<CategoryEntity> listWithTree() {
-        List<CategoryEntity> categoryList = baseMapper.selectList(new LambdaQueryWrapper<CategoryEntity>().eq(CategoryEntity::getShowStatus, 1));
+        List<CategoryEntity> categoryList = baseMapper.selectList(new LambdaQueryWrapper<CategoryEntity>()
+                .eq(CategoryEntity::getShowStatus, 1)
+                .eq(CategoryEntity::getIsDeleted, 0));
         return categoryList.stream()
                 .filter(categoryEntity -> categoryEntity.getParentCid() == 0)
                 .peek(menu -> menu.setChildren(getChildren(menu, categoryList)))
@@ -43,13 +67,15 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryMapper, CategoryEnt
                 .toList();
     }
 
-    @Override
     @Transactional
+    @Override
     public void delCate(List<Long> cateIds) {
         for (Long id : cateIds) {
             CategoryEntity entity = baseMapper.selectById(id);
             if (entity != null) {
-                Long count = baseMapper.selectCount(new LambdaQueryWrapper<CategoryEntity>().eq(CategoryEntity::getParentCid, entity.getCatId()));
+                Long count = baseMapper.selectCount(new LambdaQueryWrapper<CategoryEntity>()
+                        .eq(CategoryEntity::getParentCid, entity.getCatId())
+                        .eq(CategoryEntity::getIsDeleted, 0));
                 if (count > 0) {
                     throw new CustomException(String.format("Id %s the submenu is in use!", id));
                 }

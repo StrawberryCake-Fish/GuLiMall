@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.fish.core.exception.CustomException;
 import org.fish.core.exception.ResultMsgEnum;
 import org.fish.core.http.CommonResult;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -19,7 +20,13 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(Exception.class)
     public CommonResult<?> error(Exception e) {
         log.error("Error ", e);
-        return CommonResult.fail(ResultMsgEnum.ERROR.getCode(), "Server Error!");
+        return CommonResult.fail(ResultMsgEnum.ERROR.getCode(), "Server error!");
+    }
+
+    @ExceptionHandler(HttpMessageNotReadableException.class)
+    public CommonResult<?> error(HttpMessageNotReadableException e) {
+        log.error("Error ", e);
+        return CommonResult.fail(ResultMsgEnum.ERROR.getCode(), "Parameter error!");
     }
 
     @ExceptionHandler(HttpRequestMethodNotSupportedException.class)

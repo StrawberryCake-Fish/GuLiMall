@@ -14,6 +14,8 @@ import java.util.List;
  * @since 2023-09-22
  */
 public interface CategoryService extends IService<CategoryEntity> {
+    void createCate(CategoryEntity entity);
+
     List<CategoryEntity> listWithTree();
 
     void delCate(List<Long> cateIds);

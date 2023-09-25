@@ -1,6 +1,7 @@
 package org.fish.product.modules.category.entity;
 
 import com.baomidou.mybatisplus.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import java.io.Serial;
@@ -49,7 +50,6 @@ public class CategoryEntity implements Serializable {
     /**
      * 是否显示[0-不显示，1显示]
      */
-    @TableLogic(value = "1", delval = "0")
     @TableField("show_status")
     private Byte showStatus;
 
@@ -76,6 +76,14 @@ public class CategoryEntity implements Serializable {
      */
     @TableField("product_count")
     private Integer productCount;
+
+    /**
+     * 是否删除
+     */
+    @JsonIgnore
+    @TableLogic(value = "0", delval = "1")
+    @TableField("is_deleted")
+    private Byte isDeleted;
 
     @TableField(exist = false)
     private List<CategoryEntity> children;
